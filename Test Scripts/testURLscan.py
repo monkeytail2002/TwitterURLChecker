@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import configparser
 import requests
-
+import json
 
 #Read configuration file for API key
 config = configparser.ConfigParser()
@@ -25,7 +25,12 @@ data = '{"url":"www.google.com" , "public": "on"}'
 #Posts scan through urlscan.io with headers and data
 scan = requests.post('https://urlscan.io/api/v1/scan/', headers=headers, data=data)
 
-#decodes scan details.  This should result in the UUID printing to console.
+#decodes scan details.  This should result in details being returned as a json object
 scandetails = scan.content.decode('utf-8')
+
+#Parses json object 
+scanjson = json.loads(scandetails)
+
+
 #Prints scan details.
-print(scandetails)
+print(scanjson["uuid"])
