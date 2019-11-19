@@ -29,10 +29,8 @@ scanjson = json.loads(scandetails)
 
 #test details
 #print(scanjson["uuid"])
-js = scanjson["uuid"]
-#requests the result of the search
+uuid = scanjson["uuid"]
 
-uuid = js
 #print(uuid)
 base_url = "https://urlscan.io/api/v1/result/" + str(uuid)
 
