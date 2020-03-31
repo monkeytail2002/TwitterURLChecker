@@ -71,3 +71,54 @@ th, td {
     padding: 8px 10px;
 }
 
+/*****Navbar and side menu**********/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #000000;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #9B9BFF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #9B9BFF;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #9B9BFF;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.navbg{
+	background-color: #000000;
+}
+
+
+.logo_div{
+	background-color: #000000;
+}
