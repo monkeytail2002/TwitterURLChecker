@@ -1,0 +1,73 @@
+/*
+15009351 Angus MacDonald 31/03/2020 Tutor Suzanne Irvine
+CSS for Twitter Scraper Website
+*/
+
+/***********BASIC CSS CODE*************/
+
+* { box-sizing: border-box;
+	margin: 0px; padding: 0px; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html { 
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    background-color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    color: #9B9BFF; 
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+a { 
+    text-decoration: none; 
+}
+
+ul, ol {
+    margin-left: 40px; 
+}
+
+hr {
+    margin: 10px 0px;
+    opacity: .25;
+}
+
+p {
+    color: #9B9BFF;
+}
+
+th, td {
+    color: #9B9BFF;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+.footer{
+	background-color: #000000;
+    color: #9B9BFF;     
+}
+
+.banner {
+	background-color: #00054d ;
+}
+
+.btn {
+    background-color: #ffffff;
+    border: 2px solid #9B9BFF;
+    border-radius: 8px;
+    color: #575757;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
