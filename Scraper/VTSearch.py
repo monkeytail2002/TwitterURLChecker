@@ -16,7 +16,7 @@ config.read('/home/anmacdon/Desktop/Scraper/credentials.ini')
 api = config.get("keys", 'vtapi')
 
 #Take in url from twitter results
-twurl = 'www.test.com'
+twurl = sys.argv[1]
 
 #set up url and search parameters
 url = 'https://www.virustotal.com/vtapi/v2/url/scan'
