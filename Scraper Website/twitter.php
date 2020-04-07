@@ -1,7 +1,12 @@
 <!--Required modules-->
 <?php require_once('config.php') ?>
-<?php require_once( ROOT_PATH . '/includes/logout.php') ?>
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
+
+<?php
+    if($_SESSION['Valid']){
+    } else {
+        header("Location:index.php");
+    } ?>
 
 <title>Twitter Search | Security Suite</title>
 </head>
@@ -57,14 +62,24 @@
             <center><p>Returned URL's for: <?php echo '<p>'.$search.'</p>'; ?></p></center>
             <br>
 <?php
-            echo '<center>'.'<p>'.'URL returned: '.$retUrl1.'</p>'.'</center>'.'<br>';
-            echo '<center>'.'<p>'.'URL returned: '.$retUrl2.'</p>'.'</center>'.'<br>';
-            echo '<center>'.'<p>'.'URL returned: '.$retUrl3.'</p>'.'</center>'.'<br>';
-            echo '<center>'.'<p>'.'URL returned: '.$retUrl4.'</p>'.'</center>'.'<br>';
-        }
-
-
-?>
+            echo '<center>'.'<p>'.$retUrl1.'</p>'.'</center>'.'<br>';
+            echo '<center>'.'<p>'.$retUrl2.'</p>'.'</center>';
+            echo '<center>'.'<p>'.$retUrl3.'</p>'.'</center>';
+            echo '<center>'.'<p>'.$retUrl4.'</p>'.'</center>';
+            
+            ?>
+            <br>
+            <p><center>Sumbit to sandboxes?</center></p>
+            <br>
+            <center><button class = "btn" onclick="sandboxSubmit" type='submit'>Submit</button></center>
+            
+        <?php    
+        }           
+            ?>
+            
+            
+            
+            
         </div>
     </div>
 
@@ -72,9 +87,9 @@
 
    <script>
 
-   //    function sandboxWait(){
-     //       location.replace("/update.php")
-      //  }
+       function sandboxSubmit(){
+               location.replace("/update.php");
+           };
 
     </script>
 		<!-- Include Footer page -->
