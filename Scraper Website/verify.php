@@ -43,12 +43,12 @@
                   
          if (password_verify($UserPassword,$HashedPassword)){
 			 
-			 $_SESSION["UserId"] = $UserId;
-			 $_SESSION["Email"] = $Email;
-			 $_SESSION["UserName"] = $UserName;
-	 	 	 $_SESSION["Valid"] = 'True';
-         	 $_SESSION["UserLevel"] = $UserLevel;
-			 $_SESSION["HP"] = $HashedPassword;
+			 $_SESSION['UserId'] = $UserId;
+			 $_SESSION['Email'] = $Email;
+			 $_SESSION['UserName'] = $UserName;
+	 	 	 $_SESSION['Valid'] = 'True';
+         	 $_SESSION['UserLevel'] = $UserLevel;
+			 $_SESSION['HP'] = $HashedPassword;
 			 $_SESSION['susp'] = $Row['Suspended'];
 			 setcookie('Current_user',$UserName);
 			 
