@@ -62,8 +62,8 @@ Tutor Suzanne Irvine
     $Tool     = mysqli_real_escape_string($conn, $_POST['tools']);
     
     
-    
     if (isset($_POST['register'])){
+//        Checks to see if the passwords enter match
         if ($Password != $Password2) {
             echo '<p align="center">'.'Passwords do not match.  Please try again.'.'</p>';
         } 

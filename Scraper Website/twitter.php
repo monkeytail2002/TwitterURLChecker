@@ -1,3 +1,9 @@
+<!--
+15009351 Angus MacDonald
+Tutor Suzanne Irvine
+5/4/2020
+-->
+
 <!--Required modules-->
 <?php require_once('config.php') ?>
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
@@ -12,6 +18,7 @@
 </head>
 <body>
     <div class="container">        
+        
             <!-- banner with log in-->
         <div class="banner">
             <div class="welcome_msg">
@@ -19,11 +26,15 @@
             </div>
         </div>
             
+        						<!-- Navbar -->
+		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+        
         <div class="content">
         <?php
 
 //Get the user input and store it as a variable
         $search = $_POST['twitterSearch'];
+        $_SESSION['userInput'] = $search;
 
 //Run the python script with the user inout and return the list.
         $pythonReturn = shell_exec("python /home/anmacdon/Desktop/Scraper/twitterscrape.py '$search'");
@@ -62,7 +73,7 @@
             <center><p>Returned URL's for: <?php echo '<p>'.$search.'</p>'; ?></p></center>
             <br>
 <?php
-            echo '<center>'.'<p>'.$retUrl1.'</p>'.'</center>'.'<br>';
+            echo '<center>'.'<p>'.$retUrl1.'</p>'.'</center>';
             echo '<center>'.'<p>'.$retUrl2.'</p>'.'</center>';
             echo '<center>'.'<p>'.$retUrl3.'</p>'.'</center>';
             echo '<center>'.'<p>'.$retUrl4.'</p>'.'</center>';
@@ -71,7 +82,10 @@
             <br>
             <p><center>Sumbit to sandboxes?</center></p>
             <br>
-            <center><button class = "btn" onclick="sandboxSubmit" type='submit'>Submit</button></center>
+            <p><center>Please note that it can take up to 5 minutes to return results.</center></p>
+            <br>
+<!--            Button for submission-->
+            <center><button class = "btn" onclick="sandboxSubmit()" type='submit'>Submit</button></center>
             
         <?php    
         }           
@@ -86,10 +100,52 @@
 
 
    <script>
+//       Function that sends to update.php when submission button is pressed.
+       try{
+           function sandboxSubmit(){
+               location.href = "http://www.securitysuite.scot/update.php";
+           }
+       } catch(submitErr){
+            document.getElementById("sandboxSubmit").innerHTML = openerr.message;
+       }
+       
+       //	Script for opening the nav menu via click
+        try{
+            function openNav(){
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+        } catch(openerr){
+            document.getElementById("mySidenav").innerHTML = openerr.message;
+        }
 
-       function sandboxSubmit(){
-               location.replace("/update.php");
-           };
+//Script for closing the nav menu	
+        try{
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        } catch(closeerr){
+            document.getElementById("mySidenav").innerHTML = closeerr.message;
+        }
+
+//script for making sure that the onclick doesn't default when ontouch triggers	for opening the nav menu
+        try {
+            function openTouch(e){
+                e.preventDefault();
+                e.target.onclick();
+            }
+        } catch(opTerr){
+            document.getElementById("mySidenav").innerHTML = opTerr.message;
+        }
+	
+//script for making sure that the onclick doesn't default when ontouch triggers	for closing the nav menu
+        try {
+            function closeTouch(e){
+                e.preventDefault();
+                e.target.onclick();
+            }
+        } catch(clTerr){
+            document.getElementById("mySidenav").innerHTML = clTerr.message;
+        }	
 
     </script>
 		<!-- Include Footer page -->

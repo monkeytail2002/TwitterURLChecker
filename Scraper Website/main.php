@@ -1,3 +1,9 @@
+<!--
+15009351 Angus MacDonald
+Tutor Suzanne Irvine
+02/4/2020
+-->
+
 <!--Required modules-->
 
 <?php require_once('config.php'); ?>
@@ -5,7 +11,7 @@
 
 <!--Checks if user session is valid-->
 <?php
-    if($_SESSION["Valid"]){
+    if($_SESSION['Valid']){
     } else {
         header("Location:index.php");
     } ?>
@@ -29,8 +35,9 @@
  
         <h1><center>Twitter Tool</center></h1>
         <br><br>
-        <h2><center>Enter the term to search</center></h2>
+        <h2><center>Enter the term to search and press enter</center></h2>
         <br>
+<!--        Takes the search term from the user-->
         <center><form action="twitter.php" method="post">
             <input type="text" name="twitterSearch">
         </form>

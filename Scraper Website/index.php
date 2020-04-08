@@ -47,7 +47,7 @@ Tutor Suzanne Irvine
 <!--script to direct register button.-->
 <script type="text/javascript">
     document.getElementById("registerButton").onclick = function () {
-        location.href = "https://comp-hons.uhi.ac.uk/~15009351/Scraperwebsite/register.php";
+        location.href = "http://www.securitysuite.scot/register.php";
     }
     
 </script>
