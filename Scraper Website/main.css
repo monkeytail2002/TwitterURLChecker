@@ -1,0 +1,212 @@
+/*
+15009351 Angus MacDonald 31/03/2020 Tutor Suzanne Irvine
+CSS for Twitter Scraper Website
+*/
+
+/***********BASIC CSS CODE*************/
+
+* { box-sizing: border-box;
+	margin: 0px; padding: 0px; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html { 
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    background-color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    color: #9B9BFF; 
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+a { 
+    text-decoration: none; 
+}
+
+ul, ol {
+    margin-left: 40px; 
+}
+
+hr {
+    margin: 10px 0px;
+    opacity: .25;
+}
+
+p {
+    color: #9B9BFF;
+}
+
+th, td {
+    color: #9B9BFF;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+.footer{
+	background-color: #00054d;
+    color: #9B9BFF;     
+}
+
+.banner {
+	background-color: #00054d ;
+}
+
+.btn {
+    background-color: #ffffff;
+    border: 2px solid #9B9BFF;
+    border-radius: 8px;
+    color: #575757;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+
+/*Content div*/
+
+.content {
+	margin: 5px auto;
+	border-radius: 5px;
+	min-height: 400px;
+	background-color: #000000;
+}
+.content:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.content .content-title {
+	margin: 10px 0px;
+	color: #9B9BFF;
+	font-family: 'Noto Sans SC', sans-serif;
+}
+.content .post {
+	width: 335px;
+	margin: 9px;
+	min-height: 320px;
+	float: left;
+	border-radius: 2px;
+	border: 1px solid #9B9BFF;
+	position: relative;
+	background-color: #00054d;
+}
+.content .post .category {
+	margin-top: 0px;
+	padding: 3px 8px;
+	color: #374447;
+	background-color: #9B9BFF;
+	display: inline-block;
+	border-radius: 2px;
+	border: 1px solid #374447;
+	box-shadow: 3px 2px 2px;
+	position: absolute;
+	left: 5px; top: 5px;
+	z-index: 3;
+}
+.content .post .category:hover {
+	box-shadow: 3px 2px 2px;
+	color: white;
+	background: #00054d;
+	transition: .4s;
+	opacity: 1;
+}
+.content .post .post_image {
+	height: 260px;
+	width: 100%;
+	background-size: 100%;
+}
+.content .post .post_image {
+	width: 100%;
+	height: 260px;
+}
+.content .post .post_info {
+	height: 100%;
+	padding: 0px 5px;
+	font-weight: 200;
+    font-family: 'Noto Sans SC', sans-serif;
+	background-color: #00054d;
+	
+}
+.content .post .post_info {
+	color: #222;
+}
+.content .post .post_info span {
+	color: #9B9BFF;
+}
+.content .post .post_info span.read_more {
+	position: absolute;
+	right: 5px; bottom: 5px;
+}
+
+.content .post-wrapper {
+	width: 70%;
+	float: left;
+	min-height: 250px;
+}
+
+/*****Navbar and side menu**********/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #00054d;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #9B9BFF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #9B9BFF;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #9B9BFF;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.navbg{
+	background-color: #00054d;
+}
+
+
+.logo_div{
+	background-color: #00054d;
+}
