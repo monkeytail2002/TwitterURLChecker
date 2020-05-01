@@ -1,20 +1,6 @@
-<!--
-15009351 Angus MacDonald
-Tutor Suzanne Irvine
-13/4/2020
--->
-
 <?php 
 //Pulls in required module
 require_once('config.php');
-
-
-//Check session validity
-if($_SESSION["Valid"]){
-	} else {
-	header("Location:index.php");
-}
-
 
 //Run query to pull in username from Users table
 $query = "SELECT * FROM Users ORDER BY Username ASC";
