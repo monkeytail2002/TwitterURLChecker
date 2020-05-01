@@ -95,6 +95,76 @@ Tutor Suzanne Irvine
 			}
 	}
 	
+	//Promotes the user from the admin dashboard
+
+	if($promote == 1){
+		
+		$role = 2;
+	
+		$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$promote_user'";
+		$result = mysqli_query($conn,$p_query);
+		
+				if ($result = true){
+				echo "<script type='text/javascript'>alert('User promoted');
+				window.location='dashboard.php';
+				</script>";
+				} else {
+					echo "<script type='text/javascript'>alert('Unable to promote user');
+					window.location='dashboard.php';
+					</script>";
+				}
+		} 
+	//		demotes the user from the admin dashboard
+		 else if($promote == 2){
+			$role = 1;
+			
+			$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$p_user'";
+			$result = mysqli_query($conn,$p_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User demoted');
+				window.location='users.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to demote user');
+				window.location='users.php';
+				</script>";
+			}
+		}
+
+	
+	
+		//Suspends the users from the admin dashboard
+		if($suspend == 1){
+	
+			
+			$s_query= "UPDATE Users SET Suspended = '2' WHERE Username = '$promote_user'";
+			$result = mysqli_query($conn,$s_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User suspended');
+				window.location='dashboard.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');
+				window.location='dashboard.php';
+				</script>";
+			}
+		}
+	
+	
+	//Unsuspends the users
+		if($suspend == 2){
+			$s_query= "UPDATE Users SET Suspended = '1' WHERE Username = '$promote_user'";
+			$result = mysqli_query($conn,$s_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User unsuspended');
+				window.location='dashboard.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');			window.location='dashboard.php';
+				</script>";
+			}
+		}
+	
     
     if($old_pwd!="" && $new_pwd!="" && $con_pwd!=""){
 
@@ -174,81 +244,7 @@ Tutor Suzanne Irvine
     
     
     
-    
-    //Promotes the user from the admin dashboard
 
-	if($promote == 1){
-		
-		$role = 2;
-	
-		$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$promote_user'";
-		$result = mysqli_query($conn,$p_query);
-		
-				if ($result = true){
-				echo "<script type='text/javascript'>alert('User promoted');
-				window.location='dashboard.php';
-				</script>";
-				} else {
-					echo "<script type='text/javascript'>alert('Unable to promote user');
-					window.location='dashboard.php';
-					</script>";
-				}
-		} 
-	//		demotes the user from the admin dashboard
-		 else if($promote == 2){
-			$role = 1;
-			
-			$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$p_user'";
-			$result = mysqli_query($conn,$p_query);
-			if ($result = true){
-				echo "<script type='text/javascript'>alert('User demoted');
-				window.location='users.php';
-				</script>";
-			} else {
-				echo "<script type='text/javascript'>alert('Unable to demote user');
-				window.location='users.php';
-				</script>";
-			}
-		}
-
-	
-	
-		//Suspends the users from the admin dashboard
-		if($suspend == 1){
-	
-			
-			$s_query= "UPDATE Users SET Suspended = '2' WHERE Username = '$promote_user'";
-			$result = mysqli_query($conn,$s_query);
-			if ($result = true){
-				echo "<script type='text/javascript'>alert('User suspended');
-				window.location='dashboard.php';
-				</script>";
-			} else {
-				echo "<script type='text/javascript'>alert('Unable to perform operation');
-				window.location='dashboard.php';
-				</script>";
-			}
-		}
-	
-	
-	//Unsuspends the users
-		if($suspend == 2){
-			$s_query= "UPDATE Users SET Suspended = '1' WHERE Username = '$promote_user'";
-			$result = mysqli_query($conn,$s_query);
-			if ($result = true){
-				echo "<script type='text/javascript'>alert('User unsuspended');
-				window.location='dashboard.php';
-				</script>";
-			} else {
-				echo "<script type='text/javascript'>alert('Unable to perform operation');			window.location='dashboard.php';
-				</script>";
-			}
-		}
-	
-	
-	
-	
-	
     //User input from twitter search
     $user_input = $_SESSION['userInput'];
     
