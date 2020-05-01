@@ -113,6 +113,44 @@ Tutor Suzanne Irvine
 
 	
 	<script>
+		
+		        //Script for opening the nav menu 
+        try{
+            function openNav(){
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+        } catch(openerr){
+            document.getElementById("mySidenav").innerHTML = openerr.message;
+        }
+    
+        //Script for closing the nav menu	
+        try{
+            function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            }
+        } catch(closeerr){
+            document.getElementById("mySidenav").innerHTML = closeerr.message;
+        }
+    
+        //script for making sure that the onclick doesn't default when ontouch triggers	for opening the nav menu
+        try {
+            function openTouch(e){
+                e.preventDefault();
+                e.target.onclick();
+            }
+        } catch(opTerr){
+            document.getElementById("mySidenav").innerHTML = opTerr.message;
+        }
+    
+        //script for making sure that the onclick doesn't default when ontouch triggers	for closing the nav menu
+        try {
+            function closeTouch(e){
+                e.preventDefault();
+                e.target.onclick();
+            }
+        } catch(clTerr){
+            document.getElementById("mySidenav").innerHTML = clTerr.message;
+        }
     
     //Alert for when register button is pressed
     	try {
