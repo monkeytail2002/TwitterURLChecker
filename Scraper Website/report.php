@@ -19,19 +19,12 @@ if($_SESSION['Valid']){
 <title>Twitter Reports | Security Suite</title>
     </head>
 <body>
-	<div class="container">
-        
-        
-        <!-- banner-->
-        <div class="banner">
-            <div class="welcome_msg">
-                <center><h1>Twitter Scraper Reports</h1></center>
-            </div>
-        </div>
-        
+	
+	<div class="container">  
                 <!-- Navbar -->
 		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
         
+<!--		form to select reports from a sandbox.-->
         <div class="content">
             <center><p>Please choose the sandbox report that you need</p></center>
             <div style="width: 40%; margin: 20px auto;">
@@ -66,49 +59,45 @@ if($_SESSION['Valid']){
     </div>
     
     <script>
-    
-    //Script for opening the nav menu 
-	
-try{
-	function openNav(){
-		document.getElementById("mySidenav").style.width = "250px";
-	}
-} catch(openerr){
-	document.getElementById("mySidenav").innerHTML = openerr.message;
-}
+		//Script for opening the nav menu 
+		try{
+			function openNav(){
+				document.getElementById("mySidenav").style.width = "250px";
+			}
+		} catch(openerr){
+			document.getElementById("mySidenav").innerHTML = openerr.message;
+		}
 
 //Script for closing the nav menu	
-try{
-	function closeNav() {
-		document.getElementById("mySidenav").style.width = "0";
-	}
-} catch(closeerr){
-	document.getElementById("mySidenav").innerHTML = closeerr.message;
-}
+		try{
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			}
+		} catch(closeerr){
+			document.getElementById("mySidenav").innerHTML = closeerr.message;
+		}
 
 //script for making sure that the onclick doesn't default when ontouch triggers	for opening the nav menu
-try {
-	function openTouch(e){
-		e.preventDefault();
-		e.target.onclick();
-	}
-} catch(opTerr){
-		document.getElementById("mySidenav").innerHTML = opTerr.message;
-}
-	
+		try {
+			function openTouch(e){
+				e.preventDefault();
+				e.target.onclick();
+			}
+		} catch(opTerr){
+			document.getElementById("mySidenav").innerHTML = opTerr.message;
+		}
+		
 //script for making sure that the onclick doesn't default when ontouch triggers	for closing the nav menu
-try {
-	function closeTouch(e){
-		e.preventDefault();
-		e.target.onclick();
-	}
-} catch(clTerr){
-		document.getElementById("mySidenav").innerHTML = clTerr.message;
-}	
-
-
-	
-		</script>
+		try {
+			function closeTouch(e){
+				e.preventDefault();
+				e.target.onclick();
+			}
+		} catch(clTerr){
+			document.getElementById("mySidenav").innerHTML = clTerr.message;
+		}
+		
+	</script>
 
 		<!-- Include Footer page -->
 <?php include('includes/footer.php') ?>

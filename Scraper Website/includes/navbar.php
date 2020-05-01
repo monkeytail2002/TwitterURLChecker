@@ -32,7 +32,7 @@ Tutor Suzanne Irvine
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" ontouchstart="closeTouch(e)"  onclick="closeNav()">&times;</a>
                 <a href="main.php">Home</a>
-		<a href="report.php">Reports</a>
+				<a href="report.php">Reports</a>
                 <a href="account.php">Account</a>
                 <a href="contacts.php">Contact</a>
                 <a href="index.php">Log Out</a>
@@ -43,7 +43,7 @@ Tutor Suzanne Irvine
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" ontouchstart="closeTouch(e)"  onclick="closeNav()">&times;</a>
                 <a href="main.php">Home</a>
-		<a href="report.php">Reports</a>
+				<a href="report.php">Reports</a>
                 <a href="dashboard.php">Dashboard</a>
                 <a href="account.php">Account</a>
                 <a href="contacts.php">Contact</a>
@@ -55,14 +55,14 @@ Tutor Suzanne Irvine
 	} else if($logged == false) {
 		?>
 		<div class="logo_div">
-		<a href="main.php"><h1>Security Suite</h1></a>
-		<span ontouchstart="openTouch(e)" onclick="openNav()"> 
-                <div class="navbg">
-			<div class="bar1"></div>
-			<div class="bar2"></div>
-			<div class="bar3"></div>
-		</div>
-		</span>
+			<a href="main.php"><h1>Security Suite</h1></a>
+			<span ontouchstart="openTouch(e)" onclick="openNav()"> 
+				<div class="navbg">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
+				</div>
+			</span>
 		</div>
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" ontouchstart="closeTouch(e)"  onclick="closeNav()">&times;</a>

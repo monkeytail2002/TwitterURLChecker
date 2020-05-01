@@ -19,7 +19,236 @@ Tutor Suzanne Irvine
 <?php
     
     //Set variables
+	
+    //	manage users variables.  All post variables are entered into an escape string.
+	$promote = mysqli_real_escape_string($conn,$_POST['promote']);
+	$promote_user = $_SESSION['promuser'];
+	$suspend = mysqli_real_escape_string($conn,$_POST['suspend']);
+	$suspend_user = mysqli_real_escape_string($conn,$_POST['suspendname']);
+	$old_pwd = mysqli_real_escape_string($conn,$_POST["oldpw"]);
+	$new_pwd = mysqli_real_escape_string($conn,$_POST["Newword"]);
+	$con_pwd = mysqli_real_escape_string($conn,$_POST["Confpass"]);
+	$session_id = $_SESSION['UserId'];
+	$new_mail = mysqli_real_escape_string($conn,$_POST["newmail"]);
+	$new_username = mysqli_real_escape_string($conn,$_POST["newun"]);
+	$verify = $_SESSION["UserName"];
+	
+
+
+	
+//	Comments
+	$comments = mysqli_real_escape_string($conn,$_POST["comment"]);
+	$vt_post_id = $_SESSION['vpid'];
+    $url_post_id = $_SESSION['upid'];
+	$delete_comment = mysqli_real_escape_string($conn,$_POST["delcom"]);
+	$comm_suspend = mysqli_real_escape_string($conn,$_POST["comsus"]);
+	
+//  Adds slashes in from of user input with special characters.
+	
+	$comments = addslashes($comments);
+	
+	
+	//	Inserts comments into post if VirusTotal
+	if($vt_post_id == true && $comments != "") {
+		$comm = "INSERT INTO Comments (UserId, VTScanId, CommentBody) VALUES ('$session_id', '$vt_post_id', '$comments')";
+		$result = mysqli_query($conn,$comm);
+		header("Location:VirusTotal.php");
+
+	} 
     
+//    Inserts comments into post if URLScan
+    if($url_post_id == true && $comments != "") {
+        $comm = "INSERT INTO Comments (UserId, URLScanId, CommentBody) VALUES ('$session_id', '$url_post_id', '$comments')";
+		$result = mysqli_query($conn,$comm);
+		header("Location:URLScan.php");
+
+	} 
+
+	//Deletes user comments.
+
+	if($delete_comment != ''){
+		$comment_delete = "DELETE FROM Comments WHERE CommentId = '$delete_comment'";
+		$result = mysqli_query($conn,$comment_delete);
+        if ($result = true){
+				echo "<script type='text/javascript'>alert('Comment deleted');
+				window.location='main.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');
+				window.location='main.php';
+				</script>";
+			}
+	}
+	
+	//Suspends users from comments
+	if($comm_suspend != ''){
+			$s_query= "UPDATE Users SET Suspended = '2' WHERE Username = '$comm_suspend'";
+			$result = mysqli_query($conn,$s_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User suspended');
+				window.location='main.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');
+				window.location='main.php';
+				</script>";
+			}
+	}
+	
+    
+    if($old_pwd!="" && $new_pwd!="" && $con_pwd!=""){
+
+		$pw_query="SELECT * FROM Users WHERE UserId ='$session_id'";
+		$result = mysqli_query($conn,$pw_query);
+		$Row = mysqli_fetch_assoc($result);
+		$hpw = $Row['Password'];
+		if($old_pwd != $new_pwd){
+			 if($new_pwd == $con_pwd){
+				 if (password_verify($old_pwd,$hpw)){
+					 //Hash the password
+					 $hashed_password = password_hash($new_pwd, PASSWORD_DEFAULT);
+					 $up_query = "UPDATE Users SET Password = '$hashed_password' WHERE UserId = '$session_id'";
+					 $result = mysqli_query($conn,$up_query);
+					 echo "<script type='text/javascript'>alert('Password updated');
+						window.location='account.php';
+						</script>";
+				 } else {
+					 echo "<script type='text/javascript'>alert('Old password entered is incorrect.  Please try again.');
+						window.location='account.php';
+						</script>";
+				 }
+			 } else {
+				 echo "<script type='text/javascript'>alert('New password does not match confirmed password.  Please try again.');
+					window.location='account.php';
+					</script>";
+			 }
+		}
+	} else {
+		echo "<script type='text/javascript'>alert('Old password matches new password.  Please try again.');
+			window.location='account.php';
+			</script>";
+	}
+
+    
+    
+    //Changes the username/email for the user from the account page	
+		
+//		Tests to see if the user has entered blank values for both entries
+	if($new_username == "" && $new_mail == ""){
+		echo "<script type='text/javascript'>alert('No details entered.  Please try again.');
+			window.location='account.php';
+			</script>";		
+//			Tests to see if the user is updating the username only
+	} else if($new_username != "" && $new_mail == "") {
+			$Query = "SELECT * FROM Users";
+			$Result = mysqli_query($conn,$Query);
+			$row = mysqli_fetch_array($result);
+			if ($row['Username'] == $new_username) {
+				echo "<script type='text/javascript'>alert('Username already exists.  Please try a different name.');
+				window.location='account.php';
+				</script>";
+			} else { 
+				$det_username = "UPDATE Users SET Username = '$new_username' where UserId = '$session_id'";
+				$result = mysqli_query($conn,$det_username);
+				echo "<script type='text/javascript'>alert('Username updated.  Please sign in again');
+				window.location='index.php';
+				</script>";
+
+				echo "Username updated"; 
+			}		
+//			Tests for email only update
+		}  else if($new_mail != "" && $new_username == ""){
+			$det_mail = "UPDATE Users SET Email = '$new_mail' where UserId = '$session_id'";
+			$result = mysqli_query($conn,$det_mail);
+				echo "<script type='text/javascript'>alert('Email updated.');
+				window.location='account.php';
+				</script>";
+//			Checks and updates both username and email
+		} else if ($new_username != "" && $new_mail != ""){
+			$det_update = "UPDATE Users SET Username = '$new_username', Email = '$new_mail' where UserId = '$session_id'";
+			$result = mysqli_query($conn,$det_update);
+				echo "<script type='text/javascript'>alert('Details updated.  Please sign in again');
+				window.location='index.php';
+				</script>";
+		}
+    
+    
+    
+    
+    //Promotes the user from the admin dashboard
+
+	if($promote == 1){
+		
+		$role = 2;
+	
+		$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$promote_user'";
+		$result = mysqli_query($conn,$p_query);
+		
+				if ($result = true){
+				echo "<script type='text/javascript'>alert('User promoted');
+				window.location='dashboard.php';
+				</script>";
+				} else {
+					echo "<script type='text/javascript'>alert('Unable to promote user');
+					window.location='dashboard.php';
+					</script>";
+				}
+		} 
+	//		demotes the user from the admin dashboard
+		 else if($promote == 2){
+			$role = 1;
+			
+			$p_query= "UPDATE Users SET Role = '$role' WHERE Username = '$p_user'";
+			$result = mysqli_query($conn,$p_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User demoted');
+				window.location='users.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to demote user');
+				window.location='users.php';
+				</script>";
+			}
+		}
+
+	
+	
+		//Suspends the users from the admin dashboard
+		if($suspend == 1){
+	
+			
+			$s_query= "UPDATE Users SET Suspended = '2' WHERE Username = '$promote_user'";
+			$result = mysqli_query($conn,$s_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User suspended');
+				window.location='dashboard.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');
+				window.location='dashboard.php';
+				</script>";
+			}
+		}
+	
+	
+	//Unsuspends the users
+		if($suspend == 2){
+			$s_query= "UPDATE Users SET Suspended = '1' WHERE Username = '$promote_user'";
+			$result = mysqli_query($conn,$s_query);
+			if ($result = true){
+				echo "<script type='text/javascript'>alert('User unsuspended');
+				window.location='dashboard.php';
+				</script>";
+			} else {
+				echo "<script type='text/javascript'>alert('Unable to perform operation');			window.location='dashboard.php';
+				</script>";
+			}
+		}
+	
+	
+	
+	
+	
     //User input from twitter search
     $user_input = $_SESSION['userInput'];
     

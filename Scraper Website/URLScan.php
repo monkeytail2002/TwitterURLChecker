@@ -22,21 +22,12 @@ if($_SESSION['Valid']){
 <?php $posts = getURLScanPosts(); ?>
 
 
-	<title>URLScan Reports | Security Suite</title>
+	<title>URLScan.io Reports | Security Suite</title>
 </head>
 <body>
 
 	<div class="container">
-        
-        <!-- banner-->
-        <div class="banner">
-            <div class="welcome_msg">
-                <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-                <h1>URLScan Reports</h1>
-            </div>
-        </div>
-        
-        
+
 		<div class="content">
             
             <hr>

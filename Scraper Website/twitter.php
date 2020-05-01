@@ -17,87 +17,71 @@ Tutor Suzanne Irvine
 <title>Twitter Search | Security Suite</title>
 </head>
 <body>
-    <div class="container">        
-        
-            <!-- banner with log in-->
-        <div class="banner">
-            <div class="welcome_msg">
-                <h1>Security Suite</h1>
-            </div>
-        </div>
-            
-        						<!-- Navbar -->
-		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-        
-        <div class="content">
-        <?php
+	    
+	<div class ="container">
+		
+		        						<!-- Navbar -->
+	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
 
-//Get the user input and store it as a variable
-        $search = $_POST['twitterSearch'];
-        $_SESSION['userInput'] = $search;
+		<div class="content">
+			<?php
 
-//Run the python script with the user inout and return the list.
-        $pythonReturn = shell_exec("python /home/anmacdon/Desktop/Scraper/twitterscrape.py '$search'");
-        //~ echo '<p>'.$pythonReturn.'</p>';
-//Put the returned list into a usable format for PHP, trimming off the various unnecessary parts
-   	    $pythonReturn = str_replace(array("u'","[","]"), array(""), $pythonReturn);
- 	    $strToPHPArray = str_getcsv($pythonReturn, ",");
-        $retUrl1  = trim($strToPHPArray[0], "'");
-        $retUrl2 = trim($strToPHPArray[1], "'");
-        $retUrl3 = trim($strToPHPArray[2], "'");
-        $retUrl4 = trim($strToPHPArray[3], "'");
+	//Get the user input and store it as a variable
+			$search = $_POST['twitterSearch'];
+			$_SESSION['userInput'] = $search;
 
-//Set the returned URL's to variables.
-        $_SESSION["URL1"] = $retUrl1;
-        $_SESSION["URL2"] = $retUrl2;
-        $_SESSION["URL3"] = $retUrl3;
-        $_SESSION["URL4"] = $retUrl4;
+		//Run the python script with the user inout and return the list.
+			$python_return = shell_exec("python /home/anmacdon/Desktop/Scraper/twitterscrape.py '$search'");
 
-//Test the returned variables
-        //~ echo '<p>'.$retUrl1.'</p>';
-        //~ echo '<p>'.$retUrl2.'</p>';
-        //~ echo '<p>'.$retUrl3.'</p>';
-        //~ echo '<p>'.$retUrl4.'</p>';
+		//Put the returned list into a usable format for PHP, trimming off the various unnecessary parts
+			$python_return = str_replace(array("u'","[","]"), array(""), $python_return);
+			$str_to_php_array = str_getcsv($python_return, ",");
+			$retuned_url_1  = trim($str_to_php_array[0], "'");
+			$retuned_url_2 = trim($str_to_php_array[1], "'");
+			$retuned_url_3 = trim($str_to_php_array[2], "'");
+			$retuned_url_4 = trim($str_to_php_array[3], "'");
 
-//Test the array output
-//        print_r($strToPHPArray);
+	//Set the returned URL's to variables.
+			$_SESSION["URL1"] = $retuned_url_1;
+			$_SESSION["URL2"] = $retuned_url_2;
+			$_SESSION["URL3"] = $retuned_url_3;
+			$_SESSION["URL4"] = $retuned_url_4;
+
+	//Displays the URL's returned
+			if ($retuned_url_1 || $retuned_url_2 || $retuned_url_3 || $retuned_url_4){
+				?>
+
+				<center><h1>Submit URLs</h1></center>
+				<br>
+				<center><p>Due to API usage limitations, only the four most recent URL's can be returned.</p></center>
+				<br>
+				<center><p>Returned URL's for: <?php echo '<p>'.$search.'</p>'; ?></p></center>
+				<br>
+
+		<?php
+				echo '<center>'.'<p>'.$retuned_url_1.'</p>'.'</center>';
+				echo '<center>'.'<p>'.$retuned_url_2.'</p>'.'</center>';
+				echo '<center>'.'<p>'.$retuned_url_3.'</p>'.'</center>';
+				echo '<center>'.'<p>'.$retuned_url_4.'</p>'.'</center>';
+
+					?>
+				<br>
+				<center><p>Submit to sandboxes?</p></center>
+				<br>
+				<center><p>Please note that it can take up to 20 minutes to return results due to the sandbox processing time.</p></center>
+				<br>
+		<!--            Button for submission-->
+				<center><button class = "btn" onclick="sandboxSubmit()" type='submit'>Submit</button></center>
+
+				<?php    
+			}           
+					?>
 
 
-//Displays the URL's returned
-        if ($retUrl1 || $retUrl2 || $retUrl3 || $retUrl4){
-		?>
 
-            <center><h1>Submit URLs</h1></center>
-            <br>
-            <center><p>Due to API usage limitations, only the four most recent URL's can be returned.</p></center>
-            <br>
-            <center><p>Returned URL's for: <?php echo '<p>'.$search.'</p>'; ?></p></center>
-            <br>
 
-<?php
-            echo '<center>'.'<p>'.$retUrl1.'</p>'.'</center>';
-            echo '<center>'.'<p>'.$retUrl2.'</p>'.'</center>';
-            echo '<center>'.'<p>'.$retUrl3.'</p>'.'</center>';
-            echo '<center>'.'<p>'.$retUrl4.'</p>'.'</center>';
-            
-            ?>
-            <br>
-            <center><p>Submit to sandboxes?</p></center>
-            <br>
-            <center><p>Please note that it can take up to 20 minutes to return results due to the sandbox processing time.</p></center>
-            <br>
-<!--            Button for submission-->
-            <center><button class = "btn" onclick="sandboxSubmit()" type='submit'>Submit</button></center>
-            
-        <?php    
-        }           
-            ?>
-            
-            
-            
-            
-        </div>
-    </div>
+		</div>
+	</div>
 
 
 

@@ -22,12 +22,6 @@ Tutor Suzanne Irvine
     
 	<div class="container">
         
-        <div class="banner">
-            <div class="welcome_msg">
-                <h1>Security Suite</h1>
-            </div>
-        </div>
-		
 						<!-- Navbar -->
 		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
 		
@@ -39,7 +33,7 @@ Tutor Suzanne Irvine
         <br>
 <!--        Takes the search term from the user-->
         <center><form action="twitter.php" method="post">
-            <input type="text" name="twitterSearch">
+			<input type="text" name="twitterSearch">
         </form>
         </center>
     </div>

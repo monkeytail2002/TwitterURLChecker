@@ -4,25 +4,23 @@ Tutor Suzanne Irvine
 31/3/2020
 -->
 
+<!--Call in required modules-->
+	<?php require_once('config.php') ?>
+	<?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
+	<?php require_once( ROOT_PATH . '/includes/logout.php') ?>
 
-<?php require_once('config.php') ?>
-<?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
-<?php require_once( ROOT_PATH . '/includes/logout.php') ?>
 
-
-<title>Sign in | Security Suite </title>
+	<title>Sign in | Security Suite </title>
 </head>
 <body>
-    
-    <div class="container">
-        
-        <!-- banner with log in-->
-        <div class="banner">
-            <div class="welcome_msg">
-                <h1>Security Suite</h1>
-            </div>
-        </div>
-        
+	
+		<!-- Navbar -->
+	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+	
+	
+	<div class="container">
+		       
+		
         <!-- Page content -->
         <div class="content">
             <h2 class="content-title">User verification required to see results.</h2>
@@ -42,15 +40,15 @@ Tutor Suzanne Irvine
                 <button id="registerButton" class="btn">Register</button>
             </div>
         </div>
-</div>
+	</div>
     
 <!--script to direct register button.-->
-<script type="text/javascript">
-    document.getElementById("registerButton").onclick = function () {
-        location.href = "http://securitysuite.scot/register.php";
-    }
+	<script type="text/javascript">
+		document.getElementById("registerButton").onclick = function () {
+			location.href = "http://securitysuite.scot/register.php";
+		}
     
-</script>
+	</script>
         
         
 <?php require_once( ROOT_PATH . '/includes/footer.php') ?>
