@@ -30,35 +30,37 @@
 						<?php 
                         if ($post['VTScanId']){
                         $vpid = $post['VTScanId'];
-						$ReportURL = $post['VTScanURL'];
-                        $Image = $post['Image'];
+			$ReportURL = $post['VTScanURL'];
                         $Date = $post['ScannedDate'];
                         $URLSearched = $post['VTURLSearched'];
-                        $ScanResult = $post['VTScanResult'];
+                        $scan_result = $post['VTScanResult'];
                         $VTReportName = $post['VTReportName'];
-        
+			$engines = $post['VTEngines'];
+			
                     ?>        
                     <div class="full-post-div">
-                    <img src="<?php echo BASE_URL . '/static/images/' . $post['Image']; ?>">
+                    <img src="<?php echo BASE_URL . '/static/images/report.jpg' ?>">
                     <h2 class="post-title">Report For <?php echo $VTReportName;?></h2>
                     <br>
                     <h2 class="post-title">URL Scanned: <?php echo $URLSearched;?></h2>
                      <div class="post-body-div">
                             <?php
+			    
 						if ($ScanResult == 1){
                             ?>
-                            <p>This URL is malicious</p>
+                            <p>This URL is marked as clean by <?php echo $scan_result; ?> out of <?php echo $engines; ?></p>
                             <br><br>
-                            <p>Full report can be found here: <?php echo '<a href='.$ReportURL.'>'.$ReportURL.'</a>'; ?></p>
+                            <p>Full report can be found here: <?php echo '<a href='.$ReportURL.'>'.'VirusTotal Report Page'.'</a>'; ?></p>
                             <br><br>
                             <p>This URL was scanned on <?php echo $Date; ?></p>
                             <br><br>
                             <?php                            
                         } else if ($ScanResult == 0){
                             ?>
-                            <p>This URL is marked as clean</p>
+			    <br>
+                            <p>This URL is marked as clean by <?php echo $scan_result; ?> out of <?php echo $engines; ?></p>
                             <br><br>
-                            <p>Full report can be found here: <?php  echo '<a href='.$ReportURL.'>'.$ReportURL.'</a>'; ?></p>
+                            <p>Full report can be found here: <?php  echo '<a href='.$ReportURL.'>'.'VirusTotal Report Page'.'</a>'; ?></p>
                             <br><br>
                             <p>This URL was scanned on <?php echo $Date; ?></p>
                             <br><br>
@@ -69,26 +71,27 @@
                 
                 else if ($post['URLScanId']){
                         $upid = $post['URLScanId'];
-						$ReportURL = $post['URLScanURL'];
-                        $Image = $post['Image'];
+			$ReportURL = $post['URLScanURL'];
                         $Date = $post['ScannedDate'];
-                        $URLSearched = $post['URURLSearched'];
-                        $ScanResult = $post['URLScanResult'];
-                        $URLReportName = $post['URLReportName'];
+                        $URLSearched = $post['URLSearched'];
+                        $URLReportName = $post['URLScanName'];
+			$report_id = $post['URLResultId'];
+			$scan_result = $post['URLScanResult'];
+		
                         ?>
                 
                 <div class="full-post-div">
-                    <img src="<?php echo BASE_URL . '/static/images/' . $post['Image']; ?>">
+                    <img src="<?php echo BASE_URL . '/static/images/URLScanLogo.jfif'; ?>">
                     <h2 class="post-title">Report For <?php echo $URLReportName;?></h2>
                     <br>
                     <h2 class="post-title">URL Scanned: <?php echo $URLSearched;?></h2>
                         <div class="post-body-div">
                             <?php
-						if ($ScanResult == 1){
+						if ($scan_result == 1){
                             ?>
                             <p>This URL is malicious</p>
                             <br><br>
-                            <p>Full report can be found here: <?php echo '<a href='.$ReportURL.'>'.$ReportURL.'</a>'; ?></p>
+                            <p>Full report can be found here: <?php echo '<a href='.$ReportURL.'>'.'URLScan Report Page'.'</a>'; ?></p>
                             <br><br>
                             <p>This URL was scanned on <?php echo $Date; ?></p>
                             <br><br>
@@ -97,7 +100,7 @@
                             ?>
                             <p>This URL is marked as clean</p>
                             <br><br>
-                            <p>Full report can be found here: <?php  echo '<a href='.$ReportURL.'>'.$ReportURL.'</a>'; ?></p>
+                            <p>Full report can be found here: <?php  echo '<a href='.$ReportURL.'>'.'URLScan Report Page'.'</a>'; ?></p>
                             <br><br>
                             <p>This URL was scanned on <?php echo $Date; ?></p>
                             <br><br>
@@ -311,4 +314,3 @@ try {
 	
 <!--	Footer-->
 <?php include( ROOT_PATH . '/includes/footer.php'); ?>
-	

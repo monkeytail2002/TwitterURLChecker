@@ -38,7 +38,7 @@ Tutor Suzanne Irvine
 
 //Run the python script with the user inout and return the list.
         $pythonReturn = shell_exec("python /home/anmacdon/Desktop/Scraper/twitterscrape.py '$search'");
-
+        //~ echo '<p>'.$pythonReturn.'</p>';
 //Put the returned list into a usable format for PHP, trimming off the various unnecessary parts
    	    $pythonReturn = str_replace(array("u'","[","]"), array(""), $pythonReturn);
  	    $strToPHPArray = str_getcsv($pythonReturn, ",");
@@ -54,10 +54,10 @@ Tutor Suzanne Irvine
         $_SESSION["URL4"] = $retUrl4;
 
 //Test the returned variables
-//        echo '<p>'.$retUrl1.'</p>';
-//        echo '<p>'.$retUrl2.'</p>';
-//        echo '<p>'.$retUrl3.'</p>';
-//        echo '<p>'.$retUrl4.'</p>';
+        //~ echo '<p>'.$retUrl1.'</p>';
+        //~ echo '<p>'.$retUrl2.'</p>';
+        //~ echo '<p>'.$retUrl3.'</p>';
+        //~ echo '<p>'.$retUrl4.'</p>';
 
 //Test the array output
 //        print_r($strToPHPArray);
@@ -66,12 +66,14 @@ Tutor Suzanne Irvine
 //Displays the URL's returned
         if ($retUrl1 || $retUrl2 || $retUrl3 || $retUrl4){
 		?>
+
             <center><h1>Submit URLs</h1></center>
             <br>
             <center><p>Due to API usage limitations, only the four most recent URL's can be returned.</p></center>
             <br>
             <center><p>Returned URL's for: <?php echo '<p>'.$search.'</p>'; ?></p></center>
             <br>
+
 <?php
             echo '<center>'.'<p>'.$retUrl1.'</p>'.'</center>';
             echo '<center>'.'<p>'.$retUrl2.'</p>'.'</center>';
@@ -80,9 +82,9 @@ Tutor Suzanne Irvine
             
             ?>
             <br>
-            <p><center>Sumbit to sandboxes?</center></p>
+            <center><p>Submit to sandboxes?</p></center>
             <br>
-            <p><center>Please note that it can take up to 5 minutes to return results.</center></p>
+            <center><p>Please note that it can take up to 20 minutes to return results due to the sandbox processing time.</p></center>
             <br>
 <!--            Button for submission-->
             <center><button class = "btn" onclick="sandboxSubmit()" type='submit'>Submit</button></center>
@@ -103,7 +105,7 @@ Tutor Suzanne Irvine
 //       Function that sends to update.php when submission button is pressed.
        try{
            function sandboxSubmit(){
-               location.href = "http://www.securitysuite.scot/update.php";
+               location.href = "http://securitysuite.scot/update.php";
            }
        } catch(submitErr){
             document.getElementById("sandboxSubmit").innerHTML = openerr.message;

@@ -85,11 +85,11 @@ Tutor Suzanne Irvine
         
         //URLScan insert
         if($urlscan_score_1|| $engines_score_1 || $community_score_1 == 0){
-            $URL_Results_Insert_1 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_1', '$community_score_1','$urlscan_verdict_1','$urlscan_score_1','$engines_verdict_1','$engines_total_1','$engines_score_1','$overall_verdict_1')";
+            $URL_Results_Insert_1 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_1', '$community_score_1','$urlscan_verdict_1','$urlscan_score_1','$engines_verdict_1','$engines_total_1','$engines_score_1','$overall_verdict_1', '$returned_URL_1')";
             $Result = mysqli_query($conn,$URL_Results_Insert_1);
             
             if($Result == true){
-                $Get_URL_Report_Id_1 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_1 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_1'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_1);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_1 = $Row['URLResultId'];
@@ -109,11 +109,11 @@ Tutor Suzanne Irvine
                 }
             }
         } else {
-            $URL_Results_Insert_1 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_1', '$community_score_1','$urlscan_verdict_1','$urlscan_score_1','$engines_verdict_1','$engines_total_1','$engines_score_1','$overall_verdict_1')";
+            $URL_Results_Insert_1 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_1', '$community_score_1','$urlscan_verdict_1','$urlscan_score_1','$engines_verdict_1','$engines_total_1','$engines_score_1','$overall_verdict_1', '$returned_URL_1')";
             $Result = mysqli_query($conn,$URL_Results_Insert_1);
             
             if($Result == true){
-                $Get_URL_Report_Id_1 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_1 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_1'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_1);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_1 = $Row['URLResultId'];
@@ -206,11 +206,11 @@ Tutor Suzanne Irvine
         
         //URLScan insert
         if($urlscan_score_2 || $engines_score_2 || $community_score_2 == 0){
-            $URL_Results_Insert_2 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_2', '$community_score_2','$urlscan_verdict_2','$urlscan_score_2','$engines_verdict_2','$engines_total_2','$engines_score_2','$overall_verdict_2')";
+            $URL_Results_Insert_2 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_2', '$community_score_2','$urlscan_verdict_2','$urlscan_score_2','$engines_verdict_2','$engines_total_2','$engines_score_2','$overall_verdict_2', '$returned_URL_2')";
             $Result = mysqli_query($conn,$URL_Results_Insert_2);
             
             if($Result == true){
-                $Get_URL_Report_Id_2 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_2 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$returned_URL_2'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_2);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_2 = $Row['URLResultId'];
@@ -230,11 +230,11 @@ Tutor Suzanne Irvine
                 }
             }
         } else {
-            $URL_Results_Insert_2 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_2', '$community_score_2','$urlscan_verdict_2','$urlscan_score_2','$engines_verdict_2','$engines_total_2','$engines_score_2','$overall_verdict_2')";
+            $URL_Results_Insert_2 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_2', '$community_score_2','$urlscan_verdict_2','$urlscan_score_2','$engines_verdict_2','$engines_total_2','$engines_score_2','$overall_verdict_2', '$returned_URL_2')";
             $Result = mysqli_query($conn,$URL_Results_Insert_2);
             
             if($Result == true){
-                $Get_URL_Report_Id_2 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_2 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$returned_URL_2'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_2);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_2 = $Row['URLResultId'];
@@ -331,11 +331,11 @@ Tutor Suzanne Irvine
         
         //URLScan insert
         if($urlscan_score_3 || $engines_score_3 || $community_score_3 == 0){
-            $URL_Results_Insert_3 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_3', '$community_score_3','$urlscan_verdict_3','$urlscan_score_3','$engines_verdict_3','$engines_total_3','$engines_score_3','$overall_verdict_3')";
+            $URL_Results_Insert_3 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_3', '$community_score_3','$urlscan_verdict_3','$urlscan_score_3','$engines_verdict_3','$engines_total_3','$engines_score_3','$overall_verdict_3', '$returned_URL_3')";
             $Result = mysqli_query($conn,$URL_Results_Insert_3);
             
             if($Result == true){
-                $Get_URL_Report_Id_3 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_3 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_3'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_3);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_3 = $Row['URLResultId'];
@@ -355,11 +355,11 @@ Tutor Suzanne Irvine
                 }
             }
         } else {
-            $URL_Results_Insert_3 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_3', '$community_score_3','$urlscan_verdict_3','$urlscan_score_3','$engines_verdict_3','$engines_total_3','$engines_score_3','$overall_verdict_3')";
+            $URL_Results_Insert_3 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_3', '$community_score_3','$urlscan_verdict_3','$urlscan_score_3','$engines_verdict_3','$engines_total_3','$engines_score_3','$overall_verdict_3', '$returned_URL_3')";
             $Result = mysqli_query($conn,$URL_Results_Insert_3);
             
             if($Result == true){
-                $Get_URL_Report_Id_3 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_3 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_3'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_3);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_3 = $Row['URLResultId'];
@@ -453,11 +453,11 @@ Tutor Suzanne Irvine
         
         //URLScan insert
         if($urlscan_score_4 || $engines_score_4 || $community_score_4 == 0){
-            $URL_Results_Insert_4 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_4', '$community_score_4','$urlscan_verdict_4','$urlscan_score_4','$engines_verdict_4','$engines_total_4','$engines_score_4','$overall_verdict_4')";
+            $URL_Results_Insert_4 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_4', '$community_score_4','$urlscan_verdict_4','$urlscan_score_4','$engines_verdict_4','$engines_total_4','$engines_score_4','$overall_verdict_4', $returned_URL_4)";
             $Result = mysqli_query($conn,$URL_Results_Insert_4);
             
             if($Result == true){
-                $Get_URL_Report_Id_4 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_4 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_4'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_4);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_4 = $Row['URLResultId'];
@@ -477,11 +477,11 @@ Tutor Suzanne Irvine
                 }
             }
         } else {
-            $URL_Results_Insert_4 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict) VALUES ('$user_input','$community_verdict_4', '$community_score_4','$urlscan_verdict_4','$urlscan_score_4','$engines_verdict_4','$engines_total_4','$engines_score_4','$overall_verdict_4')";
+            $URL_Results_Insert_4 = "INSERT INTO URL_Results (ReportName, CommunityVerdict, CommunityScore, URLScanVerdict, URLScanScore, EnginesVerdict, EnginesTotal, EnginesScore, OverallVerdict, URLSearched) VALUES ('$user_input','$community_verdict_4', '$community_score_4','$urlscan_verdict_4','$urlscan_score_4','$engines_verdict_4','$engines_total_4','$engines_score_4','$overall_verdict_4', $returned_URL_4)";
             $Result = mysqli_query($conn,$URL_Results_Insert_4);
             
             if($Result == true){
-                $Get_URL_Report_Id_4 = "SELECT URLResultId FROM URL_Results WHERE ReportName = '$user_input'";
+                $Get_URL_Report_Id_4 = "SELECT URLResultId FROM URL_Results WHERE URLSearched = '$returned_URL_4'";
                 $Result = mysqli_query($conn,$Get_URL_Report_Id_4);
                 $Row = mysqli_fetch_assoc($Result);
                 $URL_Report_Id_4 = $Row['URLResultId'];

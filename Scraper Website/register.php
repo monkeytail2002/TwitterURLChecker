@@ -65,7 +65,9 @@ Tutor Suzanne Irvine
     if (isset($_POST['register'])){
 //        Checks to see if the passwords enter match
         if ($Password != $Password2) {
-            echo '<p align="center">'.'Passwords do not match.  Please try again.'.'</p>';
+            echo "<script type='text/javascript'>alert('Passwords do not match.  Please try again.');
+                            window.location='register.php';
+                            </script>";
         } 
         else {
             //        Get user info
@@ -77,10 +79,9 @@ Tutor Suzanne Irvine
                 
                 if ($NumResults == 1){
                     //Checks if username is already created.
-                    echo 'Username already exists.  Please try a different name.';
-                    echo "<br>";
-                    echo "<br>";
-                    echo "<input TYPE='submit' VALUE='Register'>";
+                    echo "<script type='text/javascript'>alert('Username already exists.  Please try again.');
+                            window.location='register.php';
+                            </script>";
                 }
                 else {
                     $Username = addslashes($Username);
@@ -143,7 +144,7 @@ Tutor Suzanne Irvine
     //Set Sign In button location
     try {
         document.getElementById("signButton").onclick = function () {
-            location.href = "https://comp-hons.uhi.ac.uk/~15009351/Scraperwebsite/index.php";
+            location.href = "index.php";
         }
     } catch (signerr) {
          document.getElementsByName("signBtn").innerHTML = opTerr.message;
