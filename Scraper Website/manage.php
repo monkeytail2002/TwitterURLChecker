@@ -37,7 +37,7 @@ if($_SESSION["Valid"]){
 //Manages user details from the admin dashboard
 	
 	
-		if($action == 1){
+		if($post_action == 1){
 					
             ?>
 			
@@ -57,7 +57,7 @@ if($_SESSION["Valid"]){
 			</form>
 
 <?php 			
-		} else if($action == 2){ 
+		} else if($post_action == 2){ 
 		?>
 			
 <!--	Form to suspend/unsuspend users-->
