@@ -47,7 +47,7 @@
 							?>
                             <p>This URL is marked as clean by <?php echo $scan_result; ?> out of <?php echo $engines; ?></p>
                             <br><br>
-                            <p>Full report can be found here: <?php echo '<a href='.$report_url;.'>'.'VirusTotal Report Page'.'</a>'; ?></p>
+                            <p>Full report can be found here: <?php echo '<a href='.$report_url;'>'.'VirusTotal Report Page'.'</a>'; ?></p>
                             <br><br>
                             <p>This URL was scanned on <?php echo $date; ?></p>
                             <br><br>
