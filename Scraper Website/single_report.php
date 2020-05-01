@@ -116,7 +116,7 @@
             <?php
             $suspend = $_SESSION['susp'];
                          
-            if ($seshid == true && $suspend == '1'){
+            if ($session_id == true && $suspend == '1'){
                 ?>
             	<form action="update.php" method = "post">
                 	<textarea name="comment" class = "txtentry" placeholder="Leave a comment..." style="resize: none;" rows = "4" cols = "50"></textarea>
@@ -126,10 +126,10 @@
 				<br>
 			<?php		
 					
-				} else if($seshid == false){
+				} else if($session_id == false){
 					echo 'Please '.'<a href = "index.php">'.'sign in '.'</a>'.'to leave a comment'.'<br>';
 					echo '<br>';	
-				}  else if($seshid == true && $suspend == '2'){
+				}  else if($session_id == true && $suspend == '2'){
 				//		Checks if the user is suspended and removes the form
 					echo "As a suspended user you are unable to post comments.  Please contact the site administrator from the contacts page if you think you have been suspended incorrectly.".'<br>'.'<br>';
 				}
