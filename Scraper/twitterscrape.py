@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 
 import requests
 import json
@@ -7,31 +7,38 @@ import sys
 import base64
 import os
 
-#Read configuration file
-config = configparser.ConfigParser()
+#Read config file
+config=configparser.ConfigParser()
 config.sections()
 config.read('/home/anmacdon/Desktop/Scraper/credentials.ini')
 
-#Pull in API keys from configuration file
+#Pull in API keys from config file
 conKey = config.get("keys", 'consumerkey')
 conSecret = config.get("keys", 'consumersecret')
 accKey = config.get("keys", 'accesstokenkey')
 accSecret = config.get("keys", 'accesstokensecret')
 
-#reformat and encode keys
+#test API pull
+#print(conKey)
+#print(conSecret)
+#print(accKey)
+#print(accSecret)
+
+#Reformat and encode keys
 keySecret = '{}:{}'.format(conKey,conSecret).encode('ascii')
 
-#Transform bytes to bytes for printing
+#transform bytes to bytes for printing
 b64_encoded_key = base64.b64encode(keySecret)
 
-#Transform from bytes back to unicode
+#transorm back to unicode
 b64_encoded_key = b64_encoded_key.decode('ascii')
 
-#set up URL's for the authentication
+#set up URL for authentication
 baseUrl = 'https://api.twitter.com/'
 authUrl = '{}oauth2/token'.format(baseUrl)
 
-#POST headers for authentication
+#print(authUrl)
+#POST headers for information
 authHeaders = {
     'Authorization':'Basic {}'.format(b64_encoded_key),
     'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
@@ -45,7 +52,8 @@ authData = {
 #Request authentication from Twitter
 authResp = requests.post(authUrl, headers=authHeaders,data=authData)
 
-#Create bearer token that will give app authenticated access.
+#print(authResp)
+#Create bearer token that will give app authenticated access
 accessToken = authResp.json()['access_token']
 
 #Set the headers for the search
@@ -55,6 +63,7 @@ searchHeaders = {
 
 #Search parameters including user input from web page
 userSearch = sys.argv[1]
+
 searchParams = {
     'q': userSearch,
     'result_type':'recent',
@@ -64,28 +73,25 @@ searchParams = {
 #Search URL
 searchUrl = '{}1.1/search/tweets.json'.format(baseUrl)
 
-
-
-
 #Search response
 searchResp = requests.get(searchUrl, headers=searchHeaders, params=searchParams)
 
-#Convert response into readable format
+#Convert response into a readable format
 data = json.loads(searchResp.content)
 
 #drill down the Json data lists for the urls
-twitterResult = (data['statuses'])#[0])#['entities'])#['urls'])
+twitterResult = (data['statuses'])
 
 #function to get the data
 def searchTwitter(twitterSearch):
-    returnedUrl = []
+    returnedUrl=[]
     for x in twitterSearch:
         for y in x['entities']['urls']:
             returnedUrl.append(y['expanded_url'])
     return returnedUrl
 
-#Set the function to variable
+#Set the function to a variable
 twitUrl = searchTwitter(twitterResult)
 
-#prints variable that returns to php script
-print (twitUrl)
+#Print variable that returns to php script
+print(twitUrl)
